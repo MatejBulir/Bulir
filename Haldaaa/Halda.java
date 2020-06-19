@@ -35,15 +35,15 @@ public class Halda<T extends Comparable<T>> {
 			pole[velikost] = i;
 			int Index = velikost;
 			velikost++;
-			while (i < pole[Index / 2] && Index != 0) {
-				pole[Index] = pole[Index / 2];
-				Index /= 2;
+			while (Index !=0 && pole[Index] < pole[getParent(Indext)]) {
+				int pomocna = pole[getParent(Index)];
+				pole[Index] = pomocna;
+				Index = getParent(Index);
 			}
 		}
 	}
-
 	public int min() {
-		return pole[1];
+		return pole[0];
 	}
 
 	void swap(int x, int y) {
@@ -70,7 +70,6 @@ public class Halda<T extends Comparable<T>> {
 			velikost--;
 			return pole[0];
 		}
-
 		int root = pole[0];
 		pole[0] = pole[velikost - 1];
 		velikost--;
